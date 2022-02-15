@@ -20,7 +20,10 @@ const _todoReducer = createReducer(
   ),
   on(actions.toggleAll, (state, { completado }) =>
     state.map((todo) => ({ ...todo, completed: completado }))
-  )
+  ),
+  on(actions.deleteAllCompleted, (state) => {
+    return state.filter((todo) => !todo.completed);
+  })
 );
 
 export function todoReducer(state: any, action: any) {
